@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Muhammad | Portifolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary:#ab2a0e;
+            --primary-dark:#4e060d;
+            --secondary: #25dc4c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --white: #ffffff;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            position: relative;
+            
+        }
+        
+        /* Animated background icons */
+        .background-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .icon {
+            position: absolute;
+            opacity: 0.2;
+            color: var(--primary);
+            font-size: 1.5rem;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img{
+            width:30px;
+            height:30px;
+            border-radius:100%;
+            margin-right:10px;
+        }
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            max-width:320px;
+            box-shadow:0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: var(--secondary);
+            border-bottom:2px solid var(--primary);
+            padding:5px;
+            border-radius:10px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(43, 233, 125, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 span {
+            color: var(--primary);
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-img img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facebook { background-color: #3b5998; }
+        .github { background-color: #101320; }
+        .whatsapp { background-color: #25d366; }
+        .gmail { background-color: #d44638; }
+        .linkedIn { background-color: #15a1ff; }
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+         /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(108, 1, 15, 0.9), transparent);
+            padding: 20px;
+            color: white;
+            
+            animation:slide 8s infinite;
+        }
+        @keyframes slide{
+            0%{
+              transform: translateY(100%);
+            transition: transform 0.3s;  
+            }
+            100%{
+              transform: translateY(-0%);
+            transition: transform 0.3s;  
+            }
+        }
+       
+        .portfolio-overlay h3 {
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .portfolio-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .portfolio-link i {
+            margin-left: 5px;
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .back-to-top {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            color: var(--primary);
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+        
+        
+        /* Responsive */
+   @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+    }
+    
+            .logo h1 {
+                font-size: 1.2rem;
+    }
+    
+            .mobile-menu-btn {
+                font-size: 1.2rem;
+    }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+      @media (max-width: 480px) {
+           .hero h1 {
+             font-size: 1.8rem;
+             line-height: 1.3;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .portfolio-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    .portfolio-img {
+        height: 200px;
+    }
+    
+    .section {
+        padding: 3rem 1rem;
+    }
+    
+    .contact-item span {
+        font-size: 0.9rem;
+    }
+}
+
+    
+    </style>
+</head>
+<body>
+    <!-- Animated Background Icons -->
+    <div class="background-icons" id="backgroundIcons"></div>
+    
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="my logo">
+                <h1>Muhsul Tech </h1>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Muhammad Sulaiman</span> a Professional Computer Scientist</h1>
+                    <p>With experience in front-end web development, graphic design, and data collection. I create stunning digital experiences and visual designs that help businesses stand out and achieve their goals.</p>
+                    
+            <a href="#contact" class="btn">Hire Me</a>
+                        <a href="#portfolio" class="btn btn-outline">View Work</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+            
+        </div>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="me.jpg" alt="Computer Scientist">
+                        <div class="about-text">
+            <h3>Professional Computer Scientist</h3>
+            <p>I'm a passionate computer scientist with experience in front-end web development, graphic design, and data collection. My goal is to create digital solutions that help businesses thrive in the modern world.</p>
+            <p>With years of experience in the field, I've developed a unique approach that combines technical skills with creative problem-solving to deliver outstanding results for my clients.</p>
+        </div>
+    </div>
+</section>
+            </div>
+            
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-title">
+            <h2>My Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                   <i class="fas fa-code"></i>
+                </div>
+                <h3>front-end web development</h3>
+                    <p>Custom website development using HTML, CSS, and JavaScript to create responsive, user-friendly websites that work across all devices.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Graphic Design</h3>
+                    <p>Professional design services including invitations, logos, business cards, and branding materials to make your business stand out.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Data Collection</h3>
+                    <p>Comprehensive data collection and analysis services to help you gather valuable insights and make data-driven decisions.</p>
+            </div>
+            <!-- <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Online Tutorials</h3>
+                <p>Provides a comprehensive guide for beginners in digital environments to know how to start developing their career.</p>
+            </div>           
+    </section> -->
+    <!-- Services Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Portfolio</h2>
+                <p>Here are some examples of my recent work across different services.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="buzz.png" alt="web development Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Website</h3>
+                        <p>A fully responsive online store built with HTML, CSS, and JavaScript.</p>
+                        <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="gra.jpg" alt="Graphic Design Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Brand Identity</h3>
+                        <p>Complete branding package including logo, business cards, and stationery.</p>
+                        <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data.jpg" alt="Data Collection Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Market Research</h3>
+                        <p>Comprehensive data collection and analysis for a retail business.</p>
+                        <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-title">
+            <h2>Contact Me</h2>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <span>75 Dauda mani road, katsina, Katsina State, Nigeria</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <span>+234(0)7047452927</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span>muhdsulaiman0045@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <span>Mon-Fri: 8:00 AM - 6:00 PM</span>
+                    </div>
+                </div>
+                <h3>Connect With Me</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com" class="social-link facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://github.com" class="social-link github" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://wa.me/+2347047452927" class="social-link whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:muhdsulaiman0045@gmail.com" class="social-link gmail">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/muhammad-sulaiman-353083325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link linkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>          
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Muhammad Sulaiman . All Rights Reserved.</p>
+            <p>Professional Computer Scientist.</p>
+            <a href="#home" class="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+    
+    <script>
+       // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times" style="color:#ab2a0e;"></i>' : '<i class="fas fa-bars" style="color:#ab2a0e;"></i>';
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animated Background Icons
+        const backgroundIcons = document.getElementById('backgroundIcons');
+        const moveIcons = ['fa fa-mouse', 'fa fa-keyboard', 'fa fa-laptop-code', 'fa fa-code', 'fa fa-server', 'fa fa-database', 
+                      'fa fa-paint-brush', 'fa fa-palette', 'fa fa-image', 'fa fa-font', 'fa fa-chart-bar', 'fa fa-table'];
+      
+        function createIcons() {
+            const iconCount = 20;
+            
+            for (let i = 0; i < iconCount; i++) {
+                const icon = document.createElement('i');
+                const randomIcon = moveIcons[Math.floor(Math.random() * moveIcons.length)];
+                icon.className = `icon ${randomIcon}`;
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3;
+                
+                // Random animation duration
+                const duration = Math.random() * 10 + 5;
+                
+                // Random delay
+                const delay = Math.random() * 1;
+                
+                icon.style.left = `${posX}%`;
+                icon.style.top = `${posY}%`;
+                icon.style.fontSize = `${size}rem`;
+                icon.style.animationDuration = `${duration}s`;
+                icon.style.animationDelay = `${delay}s`;
+                
+                backgroundIcons.appendChild(icon);
+            }
+        }       
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createIcons();
+        });
+    </script>
+</body>
+</html>

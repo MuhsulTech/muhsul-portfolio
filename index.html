@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Professional Computer Scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #6C010F;
+            --secondary: #00FF09;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: var(--white);
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        .welcome-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+                        background:url('computer.jpg') center/cover no-repeat;
+        }
+        
+       
+        
+        /* Content */
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--white);
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(108, 1, 15, 0.8);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--white), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+               border-top:5px solid var(--primary);  
+               border-radius:20px;
+            }
+            to {
+               border-bottom:5px solid var(--secondary);  
+               border-radius:20px;
+            }
+        }
+        
+        p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: #111;
+            box-shadow: 0 0 15px var(--secondary);
+        }
+        
+        
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+            }            
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="welcome-background"></div>
+    
+    <!-- Animated Icons -->
+    <div class="floating-icons" id="floatingIcons"></div>
+    
+    <!-- Main Content -->
+    <div class="welcome-container">
+        <div class="logo">Muhsul <span> Tech</span></div>
+        <h1>Welcome to My Digital Space</h1>
+        <p>I'm Muhammad Sulaiman (Muhsul), a professional computer scientist specializing in web development, graphic design, and data solutions. Let's create something amazing together.</p>
+        <div class="btn-container">
+            <a href="portifolio.html#home" class="btn">View My portfolio</a>
+            <a href="portifolio.html#contact" class="btn btn-outline">View my CV</a>
+        </div>
+    </div>
+    
+   
+    
+    <script>
+        // Floating Icons Animation
+        const floatingIcons = document.getElementById('floatingIcons');
+        const icons = ['fa-mouse', 'fa-keyboard', 'fa-laptop-code', 'fa-code', 'fa-server', 'fa-database', 
+                      'fa-paint-brush', 'fa-palette', 'fa-image', 'fa-font', 'fa-chart-bar', 'fa-table'];
+        
+        
+        // Button hover effect enhancement
+        const buttons = document.querySelectorAll('.btn');
+        
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
